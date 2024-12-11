@@ -1,4 +1,4 @@
-import { formatUnits, Provider, ReceiptScriptResult, Wallet } from "fuels";
+import { formatUnits, Provider, Wallet } from "fuels";
 
 export const getTransferCost = async () => {
   const privateKey = process.env.WALLET_PVT_KEY as string;
@@ -18,9 +18,7 @@ export const getTransferCost = async () => {
     100
   );
 
-  const { receipts } = await sendingWallet.simulateTransaction(transferTx);
-
-  const { gasUsed } = receipts.find((r) => r.type === 9) as ReceiptScriptResult;
+  const { gasUsed } = await sendingWallet.getTransactionCost(transferTx);
 
   const gasUsedInNum = formatUnits(gasUsed);
 
