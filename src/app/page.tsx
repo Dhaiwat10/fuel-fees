@@ -31,8 +31,7 @@ export default async function Home() {
       >
         <p className="mt-4">
           <b>
-            {howMuchCheaperComparedToTopEVMRollups(gasUsedInTransferInUsd)}{" "}
-            times
+            {howMuchCheaperComparedToTopEVMRollups(gasUsedInTransferInUsd)}%
           </b>{" "}
           cheaper on avg. compared to top EVM rollups
         </p>

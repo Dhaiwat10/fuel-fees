@@ -15,6 +15,10 @@ export const ethToUsd = async (ethValue: number) => {
 
 export const howMuchCheaperComparedToTopEVMRollups = (fuelFee: number) => {
     const topRollupsAvgFee = 0.005; // USD
+    // Calculate how much cheaper Fuel is:
+    // ( (topRollupsAvgFee - fuelFee) / topRollupsAvgFee ) * 100%
     
-    return ((fuelFee / topRollupsAvgFee) * 100).toFixed(1);
-}
+    const cheaperPercentage = ((topRollupsAvgFee - fuelFee) / topRollupsAvgFee) * 100;
+    return cheaperPercentage.toFixed(0); // e.g., "90"
+  };
+  
