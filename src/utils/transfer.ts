@@ -18,9 +18,10 @@ export const getTransferCost = async () => {
     100
   );
 
-  const { gasUsed } = await sendingWallet.getTransactionCost(transferTx);
 
-  const gasUsedInNum = formatUnits(gasUsed);
+  const { maxFee } = await sendingWallet.getTransactionCost(transferTx);
+
+  const gasUsedInNum = formatUnits(maxFee);
 
   return gasUsedInNum;
 };
