@@ -12,3 +12,9 @@ export const ethToUsd = async (ethValue: number) => {
     const ethUsdPrice = await getEthUsdPrice();
     return ethValue * ethUsdPrice;
 }
+
+export const howMuchCheaperComparedToTopEVMRollups = (fuelFee: number) => {
+    const topRollupsAvgFee = 0.005; // USD
+    
+    return ((fuelFee / topRollupsAvgFee) * 100).toFixed(1);
+}
