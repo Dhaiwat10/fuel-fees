@@ -16,7 +16,7 @@ export default async function Home() {
       </a>
       {/* <h1 className="text-4xl mt-2">Fuel Ignition Fees Live</h1> */}
       <span className="mt-12">
-        Avg. cost for one transfer on Fuel Ignition
+        Current avg. cost for one transfer on Fuel Ignition
       </span>{" "}
       {/* <span className="text-red-500">🔴 Live</span>  */}
       <h3 className="text-3xl md:text-5xl font-bold mt-2 text-center">
