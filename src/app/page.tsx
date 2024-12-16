@@ -2,12 +2,16 @@ import {
   ethToUsd,
   howMuchCheaperComparedToTopEVMRollups,
 } from "@/utils/conversion";
+import { getSwapCost } from "@/utils/swap";
 import { getTransferCost } from "@/utils/transfer";
 import Image from "next/image";
 
 export default async function Home() {
   const gasUsedInTransfer = await getTransferCost();
   const gasUsedInTransferInUsd = await ethToUsd(+(await getTransferCost()));
+
+  const gasUsedInSwap = await getSwapCost();
+  const gasUsedInSwapInUsd = await ethToUsd(+(await getSwapCost()));
 
   return (
     <main className="min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] flex flex-col items-center justify-center">
@@ -20,9 +24,24 @@ export default async function Home() {
       </span>{" "}
       {/* <span className="text-red-500">🔴 Live</span>  */}
       <h3 className="text-3xl md:text-5xl font-bold mt-2 text-center">
-        ${gasUsedInTransferInUsd}
+        ${gasUsedInTransferInUsd.toFixed(7)}
       </h3>
       <span className="mt-2">{gasUsedInTransfer.toString()} ETH</span>
+      <span className="mt-12">
+        Current avg. cost for one swap on{" "}
+        <a
+          href="https://mira.ly/"
+          target="_blank"
+          rel="noreferrer"
+          className="underline underline-offset-4 decoration-1 hover:decoration-[#00F58C] hover:text-[#00F58C] transition-all"
+        >
+          Mira
+        </a>
+      </span>
+      <h3 className="text-3xl md:text-5xl font-bold mt-2 text-center">
+        ${gasUsedInSwapInUsd.toFixed(7)}
+      </h3>
+      <span className="mt-2">{gasUsedInSwap.toString()} ETH</span>
       <a
         href="https://www.growthepie.xyz/fundamentals/transaction-costs"
         target="_blank"
